@@ -61,13 +61,85 @@
   <!-- END: header -->
   <section class="probootstrap-slider flexslider">
     <ul class="slides">
-      <li style="background-image: url(img/slider_1.jpg);">
+      <li style="background-image: url(img/musician_1.jpg);">
         <div class="container">
           <div class="row">
             <div class="col-md-12 text-center">
               <div class="slides-text probootstrap-animate">
-                <h2>Services</h2>
-                <p>Free HTML5 Template by <a href="https://uicookies.com/" target="_blank">uicookies.com</a>. Far far away, behind the word mountains, far from the countries.</p>
+                <h2>Songs</h2>
+                <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg">
+        <source type="audio/mp3" src="absolutelyInfinite.mp3">
+        Sorry, your browser does not support HTML5 audio.
+    </audio>
+<ul id="playlist">
+        <li class="active">
+            <a href="absolutelyInfinite.mp3">
+                Absolute Infinity - Ben Todd
+            </a>
+        </li>
+        <li class="active">
+            <a href="loveVsFear.mp3">
+                Love vs Fear - Ben Todd
+            </a>
+        </li>
+        <li class="active">
+            <a href="liveEveryMoment.mp3">
+                Live Every Moment - Ben Todd
+            </a>
+        </li>
+                <li class="active">
+            <a href="beautifulPeople.mp3">
+                Beautiful People - Ben Todd
+            </a>
+        </li>
+          </li>
+                <li class="active">
+            <a href="theJoker.mp3">
+                The Joker - Ben Todd
+            </a>
+        </li>
+    </ul>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+var audio;
+var playlist;
+var tracks;
+var current;
+
+init();
+function init(){
+    current = 0;
+    audio = $('audio');
+    playlist = $('#playlist');
+    tracks = playlist.find('li a');
+    len = tracks.length - 1;
+    audio[0].volume = .10;
+    playlist.find('a').click(function(e){
+        e.preventDefault();
+        link = $(this);
+        current = link.parent().index();
+        run(link, audio[0]);
+    });
+    audio[0].addEventListener('ended',function(e){
+        current++;
+        if(current == len){
+            current = 0;
+            link = playlist.find('a')[0];
+        }else{
+            link = playlist.find('a')[current];    
+        }
+        run($(link),audio[0]);
+    });
+}
+function run(link, player){
+        player.src = link.attr('href');
+        par = link.parent();
+        par.addClass('active').siblings().removeClass('active');
+        audio[0].load();
+        audio[0].play();
+}
+</script>
               </div>
             </div>
           </div>
