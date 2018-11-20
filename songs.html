@@ -1,21 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
-
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inner Dimension &mdash; Welcome to the inner dimension</title>
-    <meta name="description" content="Free Bootstrap Theme by uicookies.com">
-    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-
+    <title>Inner Dimension</title>
+    <meta name="description" content="Inner Dimension">
+    <meta name="keywords" content="Inner Dimension">
+    
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
     <link rel="stylesheet" href="css/styles-merged.css">
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="stylesheet" href="css/custom.css">
-<!--<audio src="liveEveryMoment.mp3" controls>
-  <p>If you are reading this, it is because your browser does not support the audio element.</p>
-</audio> -->
 
     <!--[if lt IE 9]>
       <script src="js/vendor/html5shiv.min.js"></script>
@@ -23,11 +19,11 @@
     <![endif]-->
   </head>
   <body>
-  <!-- START: header -->
 
+  <!-- START: header -->
+  
   <div class="probootstrap-loader"></div>
 
-  <header role="banner" class="probootstrap-header">
     <div class="container">
         <a href="index.html" class="probootstrap-logo">ID<span>.</span></a>
 
@@ -40,6 +36,7 @@
             <li><a href="cards/war.html">Cards</a></li>
             <li><a href="http://www.meditateblog.org">Blog</a></li>
             <li><a href="songs.html">Music</a></li>
+            <!--<li class="active"><a href="about.html">About</a></li>-->
             <!--<li><a href="contact.html">Contact</a></li> -->
           </ul>
           <ul class="probootstrap-right-nav hidden-xs">
@@ -53,17 +50,85 @@
   <!-- END: header -->
   <section class="probootstrap-slider flexslider">
     <ul class="slides">
-      <li style="background-image: url(img/slider_1.jpg);">
-        <iframe src="liveEveryMoment.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
-       <!-- <audio id="player" autoplay loop>
-            <source src="liveEveryMoment.mp3" type="audio/mp3">
-        </audio>-->
+      <li style="background-image: url(img/musician_1.jpg);">
         <div class="container">
           <div class="row">
             <div class="col-md-12 text-center">
-              <div class="slides-text probootstrap-animate">
-                <h2>Inner Dimension</h2>
+              <div class="slides-text1 probootstrap-animate">
+                <h2>Songs</h2>
+                <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg">
+        <source type="audio/mp3" src="absolutelyInfinite.mp3">
+        Sorry, your browser does not support HTML5 audio.
+    </audio>
+<ul id="playlist">
+        <li class="active">
+            <a href="absolutelyInfinite.mp3">
+                Absolute Infinity - Ben Todd
+            </a>
+        </li>
+        <li class="active">
+            <a href="loveVsFear.mp3">
+                Love vs Fear - Ben Todd
+            </a>
+        </li>
+        <li class="active">
+            <a href="liveEveryMoment.mp3">
+                Live Every Moment - Ben Todd
+            </a>
+        </li>
+                <li class="active">
+            <a href="beautifulPeople.mp3">
+                Beautiful People - Ben Todd
+            </a>
+        </li>
+          </li>
+                <li class="active">
+            <a href="theJoker.mp3">
+                The Joker - Ben Todd
+            </a>
+        </li>
+    </ul>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
 
+var audio;
+var playlist;
+var tracks;
+var current;
+
+init();
+function init(){
+    current = 0;
+    audio = $('audio');
+    playlist = $('#playlist');
+    tracks = playlist.find('li a');
+    len = tracks.length - 1;
+    audio[0].volume = .10;
+    playlist.find('a').click(function(e){
+        e.preventDefault();
+        link = $(this);
+        current = link.parent().index();
+        run(link, audio[0]);
+    });
+    audio[0].addEventListener('ended',function(e){
+        current++;
+        if(current == len){
+            current = 0;
+            link = playlist.find('a')[0];
+        }else{
+            link = playlist.find('a')[current];    
+        }
+        run($(link),audio[0]);
+    });
+}
+function run(link, player){
+        player.src = link.attr('href');
+        par = link.parent();
+        par.addClass('active').siblings().removeClass('active');
+        audio[0].load();
+        audio[0].play();
+}
+</script>
               </div>
             </div>
           </div>
@@ -73,8 +138,6 @@
   </section>
   <!-- END: slider  -->
 
-
-  <!-- END section -->
 
   <div class="probootstrap-section">
     <div class="container">
@@ -135,8 +198,6 @@
     </div>
   </div>
   <!-- END section -->
-
-
   <section class="probootstrap-section">
     <div class="container">
       <div class="row">
@@ -171,7 +232,7 @@
             <div class="icon">
               <i class="icon-wallet2"></i>
             </div>
-           <div class="text">
+            <div class="text">
               <h3 class="heading">Music</h3>
               <p>My music productions </p>
               <p><a href="songs.html">Listen</a></p>
@@ -182,19 +243,16 @@
       </div>
     </div>
   </section>
-  <!-- END section -->
-
-
+  
   <!-- END section cta -->
 
   <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
   </div>
 
-
   <script src="js/scripts.min.js"></script>
   <script src="js/main.min.js"></script>
   <script src="js/custom.js"></script>
-
+  
   </body>
 </html>

@@ -925,6 +925,31 @@ figure {
 		padding-top: 150px;
 	}
 }
+.slides-text1 {
+	z-index: 99;
+	position: relative;
+	padding-top: 350px;
+	max-width: 600px;
+	margin: 0 auto;
+	h2 {
+		font-weight: 100;
+		font-size: 50px;
+		color: $brand-white;
+		text-transform: uppercase;
+		@media screen and (max-width: $screen-sm) {
+			font-size: 30px;
+		}
+	}
+	p {
+		font-size: 18px;
+		@media screen and (max-width: $screen-sm) {
+			font-size: 16px;
+		}
+	}
+	@media screen and (max-width: $screen-sm ) {
+		padding-top: 150px;
+	}
+}
 // card
 .probootstrap-card {
 	margin-bottom: 30px;
